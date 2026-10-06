@@ -4,7 +4,8 @@ from util import limpa_tela
 from usuarios import inclui_usuario, lista_usuarios
 from autores import inclui_autor, lista_autores, get_id_autor
 from editoras import inclui_editora, lista_editoras, get_id_editora
-from emprestimos import inclui_emprestimo, lista_emprestimos
+from emprestimos import inclui_emprestimo #lista_emprestimos
+from livros import inclui_livro, listar_livros
 
 #abre a conexão com o banco
 conn = sqlite.connect("biblioteca.db")
@@ -78,9 +79,9 @@ def menu_livros():
             id_editora = get_id_editora(conn, nome_editora)
             ano_publicacao = int(input("Ano de publicação: "))
             edicao = int(input("Ano da edição: "))
-            inclui_editora(conn, titulo)
+            inclui_livro(conn, titulo, id_autor, id_editora, ano_publicacao, edicao)
         elif (opcao == '2'):
-            lista_editoras(conn)
+            listar_livros(conn)
             input("Digite uma tecla para continuar...")
         elif (opcao == '3'):
             limpa_tela()
@@ -105,7 +106,7 @@ def menu_emprestimos():
                     break
             inclui_emprestimo(conn, usuario, livros)
         elif (opcao == '2'):
-            lista_emprestimos(conn)
+            #lista_emprestimos(conn)
             input("Digite uma tecla para continuar...")
         elif (opcao == '3'):
             limpa_tela()
